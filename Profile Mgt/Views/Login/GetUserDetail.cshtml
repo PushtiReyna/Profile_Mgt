@@ -1,0 +1,102 @@
+﻿@model Profile_Mgt.ViewModel.GetUserDetail
+
+@{
+    ViewData["Title"] = "GetUserDetail";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<div class="mb-3">
+    <div class="text-success">
+
+        @if (TempData["message"] != null)
+        {
+            <p class="text-success" id='message'>@TempData["message"]</p>
+        }
+
+    </div>
+</div>
+
+
+<table class="table table-bordered-none table-responsive">
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Id)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Id)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Firstname)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Firstname)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Middlename)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Middlename)</td>
+    </tr>
+
+     <tr>
+        <td>@Html.DisplayNameFor(model => model.Lastname)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Lastname)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Email)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Email)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Dob)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Dob)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Address)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Address)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Pincode)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Pincode)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Username)</td>
+        <td>&nbsp;</td>
+        <td>@Html.DisplayFor(model => model.Username)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ProfileImage)</td>
+        <td>&nbsp;</td>
+        <td>
+        <img src="@("~/"+Model.ProfileImage)" asp-append-version="true" height="100px" width="300px" /></td>
+    </tr>
+   
+</table>
+<form asp-action="DownloadPDF" method="post">
+
+    <button type="submit" class="btn btn-primary m-1" >Download</button>
+
+</form>
+
+@section scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script type="text/javascript">
+            setTimeout(function () {
+                $('#message').hide(3000);
+            });
+        </script>
+    }
+            }
+
+
+
