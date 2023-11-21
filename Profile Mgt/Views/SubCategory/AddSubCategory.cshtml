@@ -1,0 +1,64 @@
+﻿@model Profile_Mgt.ViewModel.AddSubCategoryViewModel
+
+@{
+    ViewData["Title"] = "AddSubCategory";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<div class=" col-4 offset-4">
+    <hr />
+    <h4 class="text-center">Create Subcategory</h4>
+
+    <form asp-action="AddSubCategory" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            @if (ViewBag.Message != null)
+            {
+                <p class="text-danger" id='message'>@ViewBag.Message</p>
+            }
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Category Name</label>
+            <select class="form-control" asp-for="CategoryId" id="categorylist" asp-items="ViewBag.categoryList">
+                <option>Select category</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label class=" form-label">SubCategory Name</label>
+            <input type="text" class=" form-control" asp-for=SubcategoryName />
+            <span asp-validation-for="SubcategoryName" class="text-danger"></span>
+
+        </div>
+
+        <div class="form-group">
+            <label class=" form-label">Category Image</label>
+            <input type="file" class=" form-control" asp-for=Subcategoryimg accept="Image/jpeg, Image/png ,Image/jpg" />
+            <span asp-validation-for="Subcategoryimg" class="text-danger"></span>
+        </div>
+
+        <br />
+        <div class="d-grid gap-2">
+
+            <button type="submit" class=" btn btn-primary">Save</button>
+            <a class="btn btn-danger  text-white" asp-action="GetUserDetail" asp-controller="Profile">Cancel</a>
+
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script type="text/javascript">
+            setTimeout(function () {
+                $('#message').hide(3000);
+            });
+        </script>
+    }
+            }
+

@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\project\NET20112023\Profile_Mgt\Profile Mgt
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Category/AddCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -24,20 +28,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Login/ChangePassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cQ2hhbmdlUGFzc3dvcmQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Login/GetUserDetail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cR2V0VXNlckRldGFpbC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Login/Registration.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUmVnaXN0cmF0aW9uLmNzaHRtbA==
+[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Profile/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Profile/GetUserDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxHZXRVc2VyRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Registration/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0cmF0aW9uXFJlZ2lzdHJhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Shared/Error.cshtml]
@@ -50,6 +54,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/SubCategory/AddSubCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3ViQ2F0ZWdvcnlcQWRkU3ViQ2F0ZWdvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/Upload/GetImages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXBsb2FkXEdldEltYWdlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/project/NET20112023/Profile_Mgt/Profile Mgt/Views/_ViewImports.cshtml]

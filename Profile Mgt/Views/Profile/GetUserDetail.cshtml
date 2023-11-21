@@ -5,17 +5,12 @@
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 
-<div class="mb-3">
-    <div class="text-success">
-
-        @if (TempData["message"] != null)
-        {
-            <p class="text-success" id='message'>@TempData["message"]</p>
-        }
-
-    </div>
+<div class="form-group">
+    @if (TempData["message"] != null)
+    {
+        <p class="text-success" id='message'>@TempData["message"]</p>
+    }
 </div>
-
 
 <table class="table table-bordered-none table-responsive">
     <tr>
@@ -36,7 +31,7 @@
         <td>@Html.DisplayFor(model => model.Middlename)</td>
     </tr>
 
-     <tr>
+    <tr>
         <td>@Html.DisplayNameFor(model => model.Lastname)</td>
         <td>&nbsp;</td>
         <td>@Html.DisplayFor(model => model.Lastname)</td>
@@ -76,13 +71,16 @@
         <td>@Html.DisplayNameFor(model => model.ProfileImage)</td>
         <td>&nbsp;</td>
         <td>
-        <img src="@("~/"+Model.ProfileImage)" asp-append-version="true" height="100px" width="300px" /></td>
+            <img src="@("~/"+Model.ProfileImage)" asp-append-version="true" height="100px" width="300px" />
+        </td>
     </tr>
-   
+
 </table>
 <form asp-action="DownloadPDF" method="post">
 
-    <button type="submit" class="btn btn-primary m-1" >Download</button>
+   
+
+    <button type="submit" class="btn btn-primary m-1">Download</button>
 
 </form>
 
@@ -97,6 +95,8 @@
         </script>
     }
             }
+
+
 
 
 

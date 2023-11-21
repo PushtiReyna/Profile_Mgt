@@ -20,3 +20,30 @@ CREATE TABLE UserMst(
 	UpdateBy int not null,
 	UpdatedOn datetime null
 )
+
+
+
+CREATE TABLE CategoryMst(
+	CategoryId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	CategoryName [Varchar](100) NOT NULL,
+	CategoryImage nvarchar(max) not null,
+	IsActive bit not null,
+	IsDelete bit not null,
+	CreatedBy int not null,
+	CreatedOn datetime null,
+	UpdateBy int not null,
+	UpdatedOn datetime null
+)
+
+	CREATE TABLE SubcategoryMst(
+	SubcategoryId int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	SubcategoryName [Varchar](100) NOT NULL,
+	CategoryId Int Not Null,
+	SubcategoryImage nvarchar(max) not null,
+	IsActive bit not null,
+	IsDelete bit not null,
+	CreatedBy int not null,
+	CreatedOn datetime null,
+	UpdateBy int not null,
+	UpdatedOn datetime null
+	)

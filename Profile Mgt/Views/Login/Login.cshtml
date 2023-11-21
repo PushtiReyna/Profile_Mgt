@@ -12,6 +12,13 @@
     <form asp-action="Login" method="post">
 
         <div class="form-group">
+            @if (TempData["Success"] != null)
+            {
+                <p class="text-success" id='message'>@TempData["Success"]</p>
+            }
+        </div>
+
+        <div class="form-group">
             @if (ViewBag.Message != null)
             {
                 <p class="text-danger" id='message'>@ViewBag.Message</p>

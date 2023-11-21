@@ -4,15 +4,15 @@ namespace Profile_Mgt.ViewModel
 {
     public class RegistrationViewModel
     {
-        [Required(ErrorMessage = "Please enter Firstname")]
+        [Required(ErrorMessage = "Please enter Firstname"), MaxLength(10)]
         [RegularExpression(@"^[A-Za-z\s]*$", ErrorMessage = "Invalid Firstname.")]
         public string Firstname { get; set; } = null!;
 
-        [Required(ErrorMessage = "Please enter Middlename")]
+        [Required(ErrorMessage = "Please enter Middlename"), MaxLength(10)]
         [RegularExpression(@"^[A-Za-z\s]*$", ErrorMessage = "Invalid Middlename.")]
         public string? Middlename { get; set; }
 
-        [Required(ErrorMessage = "Please enter Lastname")]
+        [Required(ErrorMessage = "Please enter Lastname"), MaxLength(10)]
         [RegularExpression(@"^[A-Za-z\s]*$", ErrorMessage = "Invalid Lastname.")]
         public string Lastname { get; set; } = null!;
 
@@ -29,9 +29,8 @@ namespace Profile_Mgt.ViewModel
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "invalid address")]
         public string Address { get; set; } = null!;
 
-        //[Required(ErrorMessage = "Please Enter pincode Number")]
-        //[MinLength(6, ErrorMessage = "invalid pincode number")]
-        //[MaxLength(6, ErrorMessage = "invalid pincode number")]
+        [Required(ErrorMessage = "Please Enter pincode Number")]
+        [RegularExpression(@"^[1-9]\d{5}$", ErrorMessage = "Please enter a valid 6-digit pin code.")]
         public int Pincode { get; set; }
 
         [Required(ErrorMessage = "Please Enter username"), MaxLength(10)]

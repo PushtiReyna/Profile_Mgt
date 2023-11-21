@@ -1,0 +1,55 @@
+﻿@model Profile_Mgt.ViewModel.AddCategoryViewModel
+
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<div class=" col-4 offset-4">
+    <hr />
+    <h4 class="text-center">Create Category</h4>
+
+    <form asp-action="AddCategory" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            @if (ViewBag.Message != null)
+            {
+                <p class="text-danger" id='message'>@ViewBag.Message</p>
+            }
+        </div>
+
+        <div class="form-group">
+            <label class=" form-label">CategoryName</label>
+            <input type="text" class=" form-control" asp-for=CategoryName />
+            <span asp-validation-for="CategoryName" class="text-danger"></span>
+
+        </div>
+
+        <div class="form-group">
+            <label class=" form-label">Category Image</label>
+            <input type="file" class=" form-control" asp-for=Categoryimg accept="Image/jpeg, Image/png ,Image/jpg" />
+            <span asp-validation-for="Categoryimg" class="text-danger"></span>
+        </div>
+
+        <br />
+        <div class="d-grid gap-2">
+
+            <button type="submit" class=" btn btn-primary">Save</button>
+            <a class="btn btn-danger  text-white" asp-action="GetUserDetail" asp-controller="Profile">Cancel</a>
+
+        </div>
+    </form>
+</div>
+
+@section scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+        <script type="text/javascript">
+            setTimeout(function () {
+                $('#message').hide(3000);
+            });
+        </script>
+    }
+            }
+
