@@ -20,20 +20,20 @@ namespace Profile_Mgt.Controllers
         {
             if (HttpContext.Session.GetString("UserSession") != null)
             {
-                var user = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
-                if (user != null)
+                var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
+                if (userDetail != null)
                 {
                     GetUserDetail getUserDetail = new GetUserDetail();
-                    getUserDetail.Id = user.Id;
-                    getUserDetail.Firstname = user.Firstname;
-                    getUserDetail.Middlename = user.Middlename;
-                    getUserDetail.Lastname = user.Lastname;
-                    getUserDetail.Email = user.Email;
-                    getUserDetail.Dob = user.Dob;
-                    getUserDetail.Address = user.Address;
-                    getUserDetail.Pincode = user.Pincode;
-                    getUserDetail.Username = user.Username;
-                    getUserDetail.ProfileImage = user.ProfileImage;
+                    getUserDetail.Id = userDetail.Id;
+                    getUserDetail.Firstname = userDetail.Firstname;
+                    getUserDetail.Middlename = userDetail.Middlename;
+                    getUserDetail.Lastname = userDetail.Lastname;
+                    getUserDetail.Email = userDetail.Email;
+                    getUserDetail.Dob = userDetail.Dob;
+                    getUserDetail.Address = userDetail.Address;
+                    getUserDetail.Pincode = userDetail.Pincode;
+                    getUserDetail.Username = userDetail.Username;
+                    getUserDetail.ProfileImage = userDetail.ProfileImage;
                     return View(getUserDetail);
                 }
             }
@@ -43,24 +43,24 @@ namespace Profile_Mgt.Controllers
         [HttpPost]
         public IActionResult DownloadPDF()
         {
-            var user = _db.UserMsts.Where(x => x.Username == HttpContext.Session.GetString("UserSession").ToString() && HttpContext.Session.GetString("UserSession") != null).FirstOrDefault();
-            if (user != null)
+            var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString() && HttpContext.Session.GetString("UserSession") != null);
+            if (userDetail != null)
             {
                 DownloadPDF downloadPDF = new DownloadPDF();
-                downloadPDF.FullName = user.Firstname + " " + user.Middlename + " " + user.Lastname;
-                downloadPDF.Email = user.Email;
-                downloadPDF.Dob = user.Dob;
-                downloadPDF.Address = user.Address;
-                downloadPDF.Pincode = user.Pincode;
+                downloadPDF.FullName = userDetail.Firstname + " " + userDetail.Middlename + " " + userDetail.Lastname;
+                downloadPDF.Email = userDetail.Email;
+                downloadPDF.Dob = userDetail.Dob;
+                downloadPDF.Address = userDetail.Address;
+                downloadPDF.Pincode = userDetail.Pincode;
 
 
                 Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 15);
 
-                if (System.IO.File.Exists("D:\\" + user.Username + ".pdf"))
+                if (System.IO.File.Exists("D:\\" + userDetail.Username + ".pdf"))
                 {
-                    System.IO.File.Delete("D:\\" + user.Username + ".pdf");
+                    System.IO.File.Delete("D:\\" + userDetail.Username + ".pdf");
                 }
-                FileStream FS = new FileStream("D:\\" + user.Username + ".pdf", FileMode.Create);
+                FileStream FS = new FileStream("D:\\" + userDetail.Username + ".pdf", FileMode.Create);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(pdfDoc, FS);
 
@@ -181,18 +181,19 @@ namespace Profile_Mgt.Controllers
         [HttpPost]
         public IActionResult ChangePassword(ChangePassowordViewModel changePassword)
         {
-            var user = _db.UserMsts.Where(x => x.Username == HttpContext.Session.GetString("UserSession").ToString() && x.Password == changePassword.Password).FirstOrDefault();
-            if (user != null && user.Password != changePassword.NewPassword)
+            var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString() && changePassword.Password != null && changePassword.NewPassword != null && changePassword.ConfirmPassword != null && x.Password == changePassword.Password);
+
+            if (userDetail != null && userDetail.Password != changePassword.NewPassword)
             {
-                user.Password = changePassword.NewPassword;
-                user.UpdateBy = 1;
-                user.UpdatedOn = DateTime.Now;
-                _db.Entry(user).State = EntityState.Modified;
+                userDetail.Password = changePassword.NewPassword;
+                userDetail.UpdateBy = 1;
+                userDetail.UpdatedOn = DateTime.Now;
+                _db.Entry(userDetail).State = EntityState.Modified;
                 _db.SaveChanges();
                 TempData["message"] = "New password updated successfully";
                 return RedirectToAction("GetUserDetail");
             }
-            else if (user != null && user.Password == changePassword.NewPassword)
+            else if (userDetail != null && userDetail.Password == changePassword.NewPassword)
             {
                 ViewBag.Message = "password is already exists";
             }

@@ -27,11 +27,11 @@ namespace Profile_Mgt.Controllers
         [HttpPost]
         public IActionResult AddCategory(AddCategoryViewModel addCategoryViewModel)
         {
-            var user = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
+            var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
 
             var categoryList = _db.CategoryMsts.Where(x => x.IsDelete == false && x.CategoryName == addCategoryViewModel.CategoryName.Trim()).ToList();
 
-            if(categoryList.Count <= 0 && user != null)
+            if(categoryList.Count <= 0 && userDetail != null)
             {
                 CategoryMst categoryMst = new CategoryMst();
 
@@ -39,7 +39,7 @@ namespace Profile_Mgt.Controllers
                 categoryMst.CategoryName = addCategoryViewModel.CategoryName;
                 categoryMst.CategoryImage = imgPath;
                 categoryMst.CreatedOn = DateTime.Now;
-                categoryMst.CreatedBy = user.Id;
+                categoryMst.CreatedBy = userDetail.Id;
                 categoryMst.IsActive = true;
 
                 _db.CategoryMsts.Add(categoryMst);

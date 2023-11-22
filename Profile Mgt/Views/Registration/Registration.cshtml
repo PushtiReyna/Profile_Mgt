@@ -36,7 +36,7 @@
 
         <div class="form-group">
             <label> PublishDate</label>
-            <input type="date" class="form-control" asp-for="Dob" placeholder="Enter PublishDate" />
+            <input type="date" class="form-control" asp-for="Dob" placeholder="Enter PublishDate" max="@DateTime.Now.AddYears(-18).ToString("yyyy-MM-dd")"/>
             <span asp-validation-for="Dob" class="text-danger"></span>
             @if (ViewBag.AgeMessage != null)
             {

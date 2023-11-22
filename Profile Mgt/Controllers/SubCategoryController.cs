@@ -20,9 +20,9 @@ namespace Profile_Mgt.Controllers
         {
             if (HttpContext.Session.GetString("UserSession") != null)
             {
-                var user = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
+                var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
 
-                var categoryList = _db.CategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == user.Id).ToList();
+                var categoryList = _db.CategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == userDetail.Id).ToList();
                 ViewBag.categoryList = new SelectList(categoryList, "CategoryId", "CategoryName");
 
                 return View();
@@ -33,14 +33,14 @@ namespace Profile_Mgt.Controllers
         [HttpPost]
         public IActionResult AddSubCategory(AddSubCategoryViewModel addSubCategoryViewModel)
         {
-            var user = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
+            var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
 
-            var categoryList = _db.CategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == user.Id).ToList();
+            var categoryList = _db.CategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == userDetail.Id).ToList();
             ViewBag.categoryList = new SelectList(categoryList, "CategoryId", "CategoryName");
 
             var subCategoryList = _db.SubcategoryMsts.Where(x => x.IsDelete == false && x.SubcategoryName == addSubCategoryViewModel.SubcategoryName.Trim()).ToList();
 
-            if (subCategoryList.Count <= 0 && user != null)
+            if (subCategoryList.Count <= 0 && userDetail != null)
             {
                 SubcategoryMst subcategoryMst = new SubcategoryMst();
 
@@ -50,7 +50,7 @@ namespace Profile_Mgt.Controllers
                 subcategoryMst.CategoryId = addSubCategoryViewModel.CategoryId;
                 subcategoryMst.SubcategoryImage = imgPath;
                 subcategoryMst.CreatedOn = DateTime.Now;
-                subcategoryMst.CreatedBy = user.Id;
+                subcategoryMst.CreatedBy = userDetail.Id;
                 subcategoryMst.IsActive = true;
 
                 _db.SubcategoryMsts.Add(subcategoryMst);

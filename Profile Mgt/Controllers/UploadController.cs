@@ -16,10 +16,10 @@ namespace Profile_Mgt.Controllers
         {
             if (HttpContext.Session.GetString("UserSession") != null)
             {
-                var user = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
+                var userDetail = _db.UserMsts.FirstOrDefault(x => x.Username == HttpContext.Session.GetString("UserSession").ToString());
 
-                var ImagesList = (from u in _db.SubcategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == user.Id)
-                                  join j in _db.CategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == user.Id)
+                var ImagesList = (from u in _db.SubcategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == userDetail.Id)
+                                  join j in _db.CategoryMsts.Where(u => u.IsDelete == false && u.CreatedBy == userDetail.Id)
                                   on u.CategoryId equals j.CategoryId
                                   select new GetImagesViewModel
                                   {
